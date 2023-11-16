@@ -22,7 +22,18 @@ public class FrgBotonLimitado extends Fragment {
      * Interface para comunicar el fragment con la actividad
      */
     public interface OnClickListener {
+        /**
+         * Llamado cuando se pulsa el botón
+         * @param numClic número de clics
+         * @param maxClics número máximo de clics
+         * @return true si se acepta el clic
+         */
         public boolean onClick(int numClic, int maxClics);
+
+        /**
+         * Llamado cuando se pulsa el botón por última vez
+         * (cuando se alcanza el número máximo de clics)
+         */
         public void ultimoClic();
     }
     // endregion
