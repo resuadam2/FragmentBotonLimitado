@@ -19,6 +19,15 @@ public class FrgBotonLimitado extends Fragment {
     private OnClickListener listener=null; // Listener
 
     /**
+     * Reinicia el contador de clics
+     */
+    public void reiniciar() {
+        boton.setEnabled(true);
+        numClics=0;
+        setBotonText();
+    }
+
+    /**
      * Interface para comunicar el fragment con la actividad
      */
     public interface OnClickListener {

@@ -7,6 +7,16 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btReiniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/reiniciar" />
+
     <EditText
         android:id="@+id/etUsuario"
         android:layout_width="match_parent"
@@ -24,10 +34,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/aceptarCondiciones" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frgBotonLimitado"
         android:name="com.resuadam2.fragmentbotonlimitado.FrgBotonLimitado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"/>
+
+
 </LinearLayout>

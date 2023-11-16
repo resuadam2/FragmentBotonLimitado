@@ -3,6 +3,7 @@ package com.resuadam2.fragmentbotonlimitado;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,6 +13,8 @@ public class MainActivity extends AppCompatActivity implements FrgBotonLimitado.
     EditText etUsuario,etPassword; // EditText para el usuario y el password
     CheckBox chkAceptarCondiciones; // CheckBox para aceptar las condiciones
     FrgBotonLimitado frgBotonLimitado; // Fragmento con el botón limitado
+
+    Button btReiniciar; // Botón para reiniciar el contador
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,17 @@ public class MainActivity extends AppCompatActivity implements FrgBotonLimitado.
         frgBotonLimitado=(FrgBotonLimitado) getSupportFragmentManager().findFragmentById(R.id.frgBotonLimitado);
         frgBotonLimitado.setOnClickListener(this, NUM_MAX_LOGIN,getString(R.string.entrar));
         frgBotonLimitado.setMostrarContadores(true);
+        btReiniciar=findViewById(R.id.btReiniciar);
+        btReiniciar.setOnClickListener(v -> reiniciarBoton());
+    }
+
+    /**
+     * Reinicia el contador del botón
+     */
+    private void reiniciarBoton() {
+        frgBotonLimitado.reiniciar();
+        btReiniciar.setEnabled(false);
+        btReiniciar.setVisibility(Button.INVISIBLE);
     }
 
     /**
@@ -61,12 +75,17 @@ public class MainActivity extends AppCompatActivity implements FrgBotonLimitado.
     }
 
     /**
-     * Último clic del botón
+     * Último clic del botón del fragment (se llama desde el fragment)
+     * (cuando se alcanza el número máximo de clics)
+     * (no se llama si se devuelve false en el método onClick)
+     * activa el botón para reiniciar el contador
      */
     @Override
     public void ultimoClic() {
         Toast.makeText(this, "No más intentos",Toast.LENGTH_LONG).show();
         // finish(); // Si se quiere salir de la aplicación, no lo veo necesario
         // TODO hacer que se pueda reiniciar el botón limitado
+        btReiniciar.setEnabled(true);
+        btReiniciar.setVisibility(Button.VISIBLE);
     }
 }

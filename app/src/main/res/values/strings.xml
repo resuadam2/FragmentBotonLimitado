@@ -7,4 +7,5 @@
     <string name="introduzcaCredenciales">Introduzca sus credenciales</string>
     <string name="acepteCondiciones">Debe aceptar las condiciones</string>
     <string name="entrar">LOGIN</string>
+    <string name="reiniciar">Reiniciar boton limitado</string>
 </resources>
